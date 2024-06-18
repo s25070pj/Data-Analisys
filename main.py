@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk, filedialog
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 
 class DataAnalyzerApp(tk.Tk):
@@ -36,6 +37,10 @@ class DataAnalyzerApp(tk.Tk):
         # Button to plot data
         self.plot_button = tk.Button(self, text="Plot", command=self.plot_data)
         self.plot_button.pack(pady=10)
+
+        # Button to plot advanced data
+        self.advanced_plot_button = tk.Button(self, text="Advanced Plot", command=self.advanced_plot)
+        self.advanced_plot_button.pack(pady=10)
 
         # Treeview to display data
         self.tree = ttk.Treeview(self)
@@ -83,6 +88,11 @@ class DataAnalyzerApp(tk.Tk):
             plt.xlabel(column)
             plt.ylabel('Frequency')
             plt.show()
+
+    def advanced_plot(self):
+        # Example of an advanced plot: Pairplot for exploring relationships between numerical features
+        sns.pairplot(self.data)
+        plt.show()
 
 
 if __name__ == "__main__":
