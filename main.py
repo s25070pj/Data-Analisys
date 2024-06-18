@@ -15,48 +15,56 @@ class DataAnalyzerApp(tk.Tk):
         self.create_widgets()
 
     def create_widgets(self):
+        # Frame for controls
+        controls_frame = tk.Frame(self)
+        controls_frame.pack(pady=10)
+
         # Button to load CSV
-        self.load_button = tk.Button(self, text="Load CSV", command=self.load_csv)
-        self.load_button.pack(pady=10)
+        self.load_button = tk.Button(controls_frame, text="Load CSV", command=self.load_csv)
+        self.load_button.grid(row=0, column=0, padx=5)
 
         # Combobox for selecting column to sort/filter
-        self.column_select = ttk.Combobox(self, state='readonly')
-        self.column_select.pack(pady=10)
+        self.column_select = ttk.Combobox(controls_frame, state='readonly')
+        self.column_select.grid(row=0, column=1, padx=5)
 
         # Entry for filter value
-        self.filter_entry = tk.Entry(self)
-        self.filter_entry.pack(pady=10)
+        self.filter_entry = tk.Entry(controls_frame)
+        self.filter_entry.grid(row=0, column=2, padx=5)
         self.filter_entry.insert(0, "Filter value")
 
         # Button to apply filter
-        self.filter_button = tk.Button(self, text="Filter", command=self.apply_filter)
-        self.filter_button.pack(pady=10)
+        self.filter_button = tk.Button(controls_frame, text="Filter", command=self.apply_filter)
+        self.filter_button.grid(row=0, column=3, padx=5)
 
         # Entry for numerical range filter
-        self.min_value_entry = tk.Entry(self)
-        self.min_value_entry.pack(pady=5)
+        self.min_value_entry = tk.Entry(controls_frame)
+        self.min_value_entry.grid(row=1, column=1, padx=5)
         self.min_value_entry.insert(0, "Min value")
 
-        self.max_value_entry = tk.Entry(self)
-        self.max_value_entry.pack(pady=5)
+        self.max_value_entry = tk.Entry(controls_frame)
+        self.max_value_entry.grid(row=1, column=2, padx=5)
         self.max_value_entry.insert(0, "Max value")
 
         # Button to apply numerical range filter
-        self.range_filter_button = tk.Button(self, text="Filter by Range", command=self.apply_range_filter)
-        self.range_filter_button.pack(pady=10)
+        self.range_filter_button = tk.Button(controls_frame, text="Filter by Range", command=self.apply_range_filter)
+        self.range_filter_button.grid(row=1, column=3, padx=5)
+
+        # Button to reset filters
+        self.reset_filter_button = tk.Button(controls_frame, text="Reset Filters", command=self.reset_filters)
+        self.reset_filter_button.grid(row=1, column=4, padx=5)
 
         # Combobox for selecting plot type
-        self.plot_type_select = ttk.Combobox(self, state='readonly', values=["Bar", "Pie", "Advanced"])
-        self.plot_type_select.pack(pady=10)
+        self.plot_type_select = ttk.Combobox(controls_frame, state='readonly', values=["Bar", "Pie", "Advanced"])
+        self.plot_type_select.grid(row=2, column=1, padx=5)
         self.plot_type_select.current(0)
 
         # Button to plot data
-        self.plot_button = tk.Button(self, text="Plot", command=self.plot_data)
-        self.plot_button.pack(pady=10)
+        self.plot_button = tk.Button(controls_frame, text="Plot", command=self.plot_data)
+        self.plot_button.grid(row=2, column=2, padx=5)
 
         # Treeview to display data
         self.tree = ttk.Treeview(self)
-        self.tree.pack(expand=True, fill='both')
+        self.tree.pack(expand=True, fill='both', pady=10)
 
         # Status bar
         self.status = tk.Label(self, text="", bd=1, relief=tk.SUNKEN, anchor=tk.W)
@@ -102,6 +110,11 @@ class DataAnalyzerApp(tk.Tk):
         self.filtered_data = self.filtered_data.sort_values(by=column)
         self.display_data(self.filtered_data)
 
+    def reset_filters(self):
+        self.filtered_data = self.data.copy()
+        self.display_data(self.data)
+        self.status.config(text="Filters reset")
+
     def plot_data(self):
         column = self.column_select.get()
         plot_type = self.plot_type_select.get()
@@ -109,7 +122,8 @@ class DataAnalyzerApp(tk.Tk):
             data_to_plot = self.filtered_data if self.filtered_data is not None else self.data
             if plot_type == "Bar":
                 plt.figure(figsize=(10, 6))
-                data_to_plot[column].value_counts().plot(kind='bar')
+                data_sorted = data_to_plot[column].value_counts().sort_index()
+                data_sorted.plot(kind='bar')
                 plt.title(f'Distribution of {column}', fontsize=16)
                 plt.xlabel(column, fontsize=14)
                 plt.ylabel('Frequency', fontsize=14)
