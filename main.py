@@ -30,9 +30,18 @@ class DataAnalyzerApp(tk.Tk):
         self.filter_button = tk.Button(self, text="Filter", command=self.apply_filter)
         self.filter_button.pack(pady=10)
 
-        # Button to apply sorting
-        self.sort_button = tk.Button(self, text="Sort", command=self.apply_sort)
-        self.sort_button.pack(pady=10)
+        # Entry for numerical range filter
+        self.min_value_entry = tk.Entry(self)
+        self.min_value_entry.pack(pady=5)
+        self.min_value_entry.insert(0, "Min value")
+
+        self.max_value_entry = tk.Entry(self)
+        self.max_value_entry.pack(pady=5)
+        self.max_value_entry.insert(0, "Max value")
+
+        # Button to apply numerical range filter
+        self.range_filter_button = tk.Button(self, text="Filter by Range", command=self.apply_range_filter)
+        self.range_filter_button.pack(pady=10)
 
         # Combobox for selecting plot type
         self.plot_type_select = ttk.Combobox(self, state='readonly', values=["Bar", "Pie", "Advanced"])
@@ -74,6 +83,16 @@ class DataAnalyzerApp(tk.Tk):
         value = self.filter_entry.get()
         filtered_data = self.data[self.data[column].astype(str).str.contains(value)]
         self.display_data(filtered_data)
+
+    def apply_range_filter(self):
+        column = self.column_select.get()
+        min_value = self.min_value_entry.get()
+        max_value = self.max_value_entry.get()
+        if column and min_value and max_value:
+            min_value = float(min_value)
+            max_value = float(max_value)
+            filtered_data = self.data[(self.data[column] >= min_value) & (self.data[column] <= max_value)]
+            self.display_data(filtered_data)
 
     def apply_sort(self):
         column = self.column_select.get()
