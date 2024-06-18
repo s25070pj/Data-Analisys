@@ -34,13 +34,14 @@ class DataAnalyzerApp(tk.Tk):
         self.sort_button = tk.Button(self, text="Sort", command=self.apply_sort)
         self.sort_button.pack(pady=10)
 
+        # Combobox for selecting plot type
+        self.plot_type_select = ttk.Combobox(self, state='readonly', values=["Bar", "Pie", "Advanced"])
+        self.plot_type_select.pack(pady=10)
+        self.plot_type_select.current(0)
+
         # Button to plot data
         self.plot_button = tk.Button(self, text="Plot", command=self.plot_data)
         self.plot_button.pack(pady=10)
-
-        # Button to plot advanced data
-        self.advanced_plot_button = tk.Button(self, text="Advanced Plot", command=self.advanced_plot)
-        self.advanced_plot_button.pack(pady=10)
 
         # Treeview to display data
         self.tree = ttk.Treeview(self)
@@ -81,17 +82,30 @@ class DataAnalyzerApp(tk.Tk):
 
     def plot_data(self):
         column = self.column_select.get()
+        plot_type = self.plot_type_select.get()
         if column:
-            plt.figure(figsize=(10, 6))
-            self.data[column].value_counts().plot(kind='bar')
-            plt.title(f'Distribution of {column}')
-            plt.xlabel(column)
-            plt.ylabel('Frequency')
-            plt.show()
+            if plot_type == "Bar":
+                plt.figure(figsize=(10, 6))
+                self.data[column].value_counts().plot(kind='bar')
+                plt.title(f'Distribution of {column}', fontsize=16)
+                plt.xlabel(column, fontsize=14)
+                plt.ylabel('Frequency', fontsize=14)
+                plt.xticks(rotation=45)
+                plt.grid(True)
+                plt.show()
+            elif plot_type == "Pie":
+                plt.figure(figsize=(10, 6))
+                self.data[column].value_counts().plot(kind='pie', autopct='%1.1f%%')
+                plt.title(f'Distribution of {column}', fontsize=16)
+                plt.ylabel('')
+                plt.show()
+            elif plot_type == "Advanced":
+                self.advanced_plot()
 
     def advanced_plot(self):
-        # Example of an advanced plot: Pairplot for exploring relationships between numerical features
+        plt.figure(figsize=(10, 6))
         sns.pairplot(self.data)
+        plt.suptitle('Pairplot of Dataset Features', fontsize=16)
         plt.show()
 
 
