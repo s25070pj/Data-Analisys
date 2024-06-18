@@ -10,6 +10,8 @@ class DataAnalyzerApp(tk.Tk):
         super().__init__()
         self.title("Data Analyzer")
         self.geometry("1000x600")
+        self.data = None
+        self.filtered_data = None
         self.create_widgets()
 
     def create_widgets(self):
@@ -64,6 +66,7 @@ class DataAnalyzerApp(tk.Tk):
         file_path = filedialog.askopenfilename(filetypes=[("CSV files", "*.csv")])
         if file_path:
             self.data = pd.read_csv(file_path)
+            self.filtered_data = self.data.copy()  # Initialize filtered_data
             self.display_data(self.data)
             self.column_select['values'] = list(self.data.columns)
             self.column_select.current(0)
@@ -81,8 +84,8 @@ class DataAnalyzerApp(tk.Tk):
     def apply_filter(self):
         column = self.column_select.get()
         value = self.filter_entry.get()
-        filtered_data = self.data[self.data[column].astype(str).str.contains(value)]
-        self.display_data(filtered_data)
+        self.filtered_data = self.data[self.data[column].astype(str).str.contains(value)]
+        self.display_data(self.filtered_data)
 
     def apply_range_filter(self):
         column = self.column_select.get()
@@ -91,21 +94,22 @@ class DataAnalyzerApp(tk.Tk):
         if column and min_value and max_value:
             min_value = float(min_value)
             max_value = float(max_value)
-            filtered_data = self.data[(self.data[column] >= min_value) & (self.data[column] <= max_value)]
-            self.display_data(filtered_data)
+            self.filtered_data = self.data[(self.data[column] >= min_value) & (self.data[column] <= max_value)]
+            self.display_data(self.filtered_data)
 
     def apply_sort(self):
         column = self.column_select.get()
-        sorted_data = self.data.sort_values(by=column)
-        self.display_data(sorted_data)
+        self.filtered_data = self.filtered_data.sort_values(by=column)
+        self.display_data(self.filtered_data)
 
     def plot_data(self):
         column = self.column_select.get()
         plot_type = self.plot_type_select.get()
         if column:
+            data_to_plot = self.filtered_data if self.filtered_data is not None else self.data
             if plot_type == "Bar":
                 plt.figure(figsize=(10, 6))
-                self.data[column].value_counts().plot(kind='bar')
+                data_to_plot[column].value_counts().plot(kind='bar')
                 plt.title(f'Distribution of {column}', fontsize=16)
                 plt.xlabel(column, fontsize=14)
                 plt.ylabel('Frequency', fontsize=14)
@@ -114,16 +118,16 @@ class DataAnalyzerApp(tk.Tk):
                 plt.show()
             elif plot_type == "Pie":
                 plt.figure(figsize=(10, 6))
-                self.data[column].value_counts().plot(kind='pie', autopct='%1.1f%%')
+                data_to_plot[column].value_counts().plot(kind='pie', autopct='%1.1f%%')
                 plt.title(f'Distribution of {column}', fontsize=16)
                 plt.ylabel('')
                 plt.show()
             elif plot_type == "Advanced":
-                self.advanced_plot()
+                self.advanced_plot(data_to_plot)
 
-    def advanced_plot(self):
+    def advanced_plot(self, data):
         plt.figure(figsize=(10, 6))
-        sns.pairplot(self.data)
+        sns.pairplot(data)
         plt.suptitle('Pairplot of Dataset Features', fontsize=16)
         plt.show()
 
