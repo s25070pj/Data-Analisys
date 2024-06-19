@@ -53,6 +53,10 @@ class DataAnalyzerApp(tk.Tk):
         self.reset_filter_button = tk.Button(controls_frame, text="Reset Filters", command=self.reset_filters)
         self.reset_filter_button.grid(row=1, column=4, padx=5)
 
+        # Button to apply sorting
+        self.sort_button = tk.Button(controls_frame, text="Sort", command=self.apply_sort)
+        self.sort_button.grid(row=1, column=0, padx=5)
+
         # Combobox for selecting plot type
         self.plot_type_select = ttk.Combobox(controls_frame, state='readonly', values=["Bar", "Pie", "Advanced"])
         self.plot_type_select.grid(row=2, column=1, padx=5)

@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="671e43c2-b965-4503-945f-c8f5833fc07b" name="Changes" comment="" />
+    <list default="true" id="671e43c2-b965-4503-945f-c8f5833fc07b" name="Changes" comment="misplacement of gui elements">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,23 +17,28 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2i40VHqyikSYvgCR49cFXZUKULB" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -42,8 +54,82 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1718734563677</updated>
-      <workItem from="1718734567564" duration="1000" />
+      <workItem from="1718734567564" duration="6122000" />
+      <workItem from="1718805035162" duration="1574000" />
     </task>
+    <task id="LOCAL-00001" summary="created gui and load csv button">
+      <option name="closed" value="true" />
+      <created>1718734870532</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1718734870532</updated>
+    </task>
+    <task id="LOCAL-00002" summary="added data filtering, sorting">
+      <option name="closed" value="true" />
+      <created>1718735081793</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1718735081793</updated>
+    </task>
+    <task id="LOCAL-00003" summary="added seaborn">
+      <option name="closed" value="true" />
+      <created>1718736816761</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1718736816761</updated>
+    </task>
+    <task id="LOCAL-00004" summary="added another types of plots">
+      <option name="closed" value="true" />
+      <created>1718744952900</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1718744952900</updated>
+    </task>
+    <task id="LOCAL-00005" summary="added filtering by range">
+      <option name="closed" value="true" />
+      <created>1718745363030</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1718745363030</updated>
+    </task>
+    <task id="LOCAL-00006" summary="fix with plots">
+      <option name="closed" value="true" />
+      <created>1718745650498</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1718745650498</updated>
+    </task>
+    <task id="LOCAL-00007" summary="misplacement of gui elements">
+      <option name="closed" value="true" />
+      <created>1718746666882</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1718746666883</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="created gui and load csv button" />
+    <MESSAGE value="added data filtering, sorting" />
+    <MESSAGE value="added seaborn" />
+    <MESSAGE value="added another types of plots" />
+    <MESSAGE value="added filtering by range" />
+    <MESSAGE value="fix with plots" />
+    <MESSAGE value="misplacement of gui elements" />
+    <option name="LAST_COMMIT_MESSAGE" value="misplacement of gui elements" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/DataAnalisys$main.coverage" NAME="main Coverage Results" MODIFIED="1718805399229" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
