@@ -1,53 +1,34 @@
 # Data Analyzer
 
-Data Analyzer is an application for data analysis using NumPy, Pandas, Matplotlib, and Seaborn libraries. The application allows loading datasets, exploring data, and generating various charts. This project was created as a college assignment.
+Data Analyzer to aplikacja do analizy danych z wykorzystaniem bibliotek NumPy, Pandas, Matplotlib oraz Seaborn. Aplikacja umożliwia wczytanie zbioru danych, jego eksplorację oraz generowanie różnorodnych wykresów. Projekt został stworzony jako zadanie zaliczeniowe na studia.
 
-## Features
+## Funkcjonalności
 
-- Load CSV files
-- Display data in a table
-- Filter data by text values
-- Filter data by numerical ranges
-- Reset filters
-- Sort data
-- Generate bar, pie, and advanced charts
-- Communicate basic insights from data analysis
+- Wczytywanie plików CSV
+- Wyświetlanie danych w tabeli z pionowym i poziomym przewijaniem
+- Filtrowanie danych według wartości tekstowych
+- Filtrowanie danych według zakresów liczbowych
+- Resetowanie filtrów
+- Sortowanie danych
+- Generowanie wykresów słupkowych, kołowych oraz zaawansowanych wykresów
+- Komunikowanie podstawowych wniosków z analizy danych
 
-## Installation
+## Instalacja
 
-1. Ensure you have the latest version of Python installed.
-2. Clone the project repository to your computer.
-3. Create and activate a Python virtual environment:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate   # for Linux/Mac
-   venv\Scripts\activate      # for Windows
-Install the required libraries:
-bash
-Skopiuj kod
-pip install -r requirements.txt
-Usage
-Run the application:
-bash
-Skopiuj kod
-python main.py
-Load a CSV file by clicking the "Load CSV" button.
-Use the available options to filter and sort data.
-Select the chart type from the dropdown menu and click the "Plot" button to generate a chart.
-Project Structure
-main.py - Main file to run the application
-requirements.txt - File with the required libraries
-README.md - Project documentation
-Explanation of Methods and Programming Solutions
-Data Analysis Methods
-Data Filtering: Allows users to filter data by text values and numerical ranges. This is useful for large datasets where only specific information is needed.
-Data Sorting: Enables sorting data by a selected column, making it easier to analyze and compare values.
-Data Visualization
-Bar Charts: Used to present the distribution of categorical data.
-Pie Charts: Used to present the percentage shares of different categories.
-Advanced Charts (Pairplot): Used to visualize relationships between multiple numerical variables simultaneously.
-Programming Solutions
-Object-Oriented Programming: The application is built using classes, which enhances code organization, reusability, and maintainability.
-Design Patterns: The project uses design patterns to improve code readability, flexibility, and maintenance. For instance, the Observer pattern can be used to update views when data changes.
-Summary
-Data Analyzer is a comprehensive tool for exploring and visualizing data. By utilizing powerful Python libraries, it provides a user-friendly interface for performing various data analysis tasks. This project demonstrates the practical application of programming and data analysis techniques learned during the course.
+1. Skopiuj repozytorium projektu na swój komputer.
+2. Przejdź do katalogu projektu.
+3. Zainstaluj wymagane biblioteki:
+   pip install -r requirements.txt
+4. Uruchom aplikację: python main.py
+5. Załaduj plik CSV, klikając przycisk "Load CSV".
+6. Użyj dostępnych opcji do filtrowania i sortowania danych.
+7. Wybierz typ wykresu z rozwijanego menu i kliknij przycisk "Plot", aby wygenerować wykres.
+
+## Wyjaśnienie metod i rozwiązań programistycznych
+- Metody analizy danych
+1. Filtrowanie danych: Pozwala użytkownikowi na filtrowanie danych według wartości tekstowych oraz zakresów liczbowych. Jest to przydatne w przypadku dużych zbiorów danych, gdzie potrzebne są tylko określone informacje.
+2. Sortowanie danych: Umożliwia sortowanie danych według wybranej kolumny, co ułatwia analizę i porównywanie wartości.
+- Wizualizacja danych
+1. Wykresy słupkowe: Używane do prezentacji rozkładu danych kategorycznych. Jest to odpowiednie do wizualizacji częstotliwości różnych kategorii.
+2. Wykresy kołowe: Używane do prezentacji udziałów procentowych poszczególnych kategorii. Jest to przydatne do pokazania proporcji każdej kategorii w zbiorze danych.
+3. Zaawansowane wykresy (Pairplot): Używane do wizualizacji relacji pomiędzy wieloma zmiennymi numerycznymi jednocześnie. Jest to przydatne do identyfikacji korelacji i wzorców w danych.

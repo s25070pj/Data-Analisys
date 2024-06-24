@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk, filedialog
+import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -14,19 +15,19 @@ class DataAnalyzerApp(tk.Tk):
         self.create_widgets()
 
     def create_widgets(self):
-        # Frame for CSV loading
+        # csv loading frame
         csv_frame = tk.Frame(self)
         csv_frame.pack(anchor="nw", padx=10, pady=10)
 
-        # Button to load CSV
+        # Csv load button
         self.load_button = tk.Button(csv_frame, text="Load CSV", command=self.load_csv)
         self.load_button.pack()
 
-        # Frame for controls
+        # Controls frame
         controls_frame = tk.Frame(self)
         controls_frame.pack(padx=10, pady=10)
 
-        # Combobox for selecting column to sort/filter
+        # Select column combobox
         self.column_select = ttk.Combobox(controls_frame, state='readonly')
         self.column_select.grid(row=0, column=1, padx=5, pady=5)
 
@@ -95,7 +96,7 @@ class DataAnalyzerApp(tk.Tk):
         file_path = filedialog.askopenfilename(filetypes=[("CSV files", "*.csv")])
         if file_path:
             self.data = pd.read_csv(file_path)
-            self.filtered_data = self.data.copy()  # Initialize filtered_data
+            self.filtered_data = self.data.copy()
             self.display_data(self.data)
             self.column_select['values'] = list(self.data.columns)
             self.column_select.current(0)
@@ -145,16 +146,16 @@ class DataAnalyzerApp(tk.Tk):
                 plt.figure(figsize=(10, 6))
                 data_sorted = data_to_plot[column].value_counts().sort_index()
                 data_sorted.plot(kind='bar')
-                plt.title(f'Distribution of {column}', fontsize=16)
+                plt.title(f'Spread of {column}', fontsize=16)
                 plt.xlabel(column, fontsize=14)
-                plt.ylabel('Frequency', fontsize=14)
+                plt.ylabel('Count', fontsize=14)
                 plt.xticks(rotation=45)
                 plt.grid(True)
                 plt.show()
             elif plot_type == "Pie":
                 plt.figure(figsize=(10, 6))
                 data_to_plot[column].value_counts().plot(kind='pie', autopct='%1.1f%%')
-                plt.title(f'Distribution of {column}', fontsize=16)
+                plt.title(f'Spread of {column}', fontsize=16)
                 plt.ylabel('')
                 plt.show()
             elif plot_type == "Advanced":
